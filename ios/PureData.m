@@ -48,13 +48,6 @@ RCT_EXPORT_METHOD(
     } else {
         /* determine whether active */
         audioController.active = [[audioProps objectForKey:@"active"] integerValue] > 0;
-        
-        // TODO: finally, propagate patch data
-        
-        // messages must be floats
-        float yn = (float)YES;
-        [PdBase sendFloat:yn toReceiver:@"onOff"];
-        
         /* resolve to confirm configuration was successful */
         resolve(audioControllerId);
     }
@@ -86,6 +79,21 @@ RCT_EXPORT_METHOD(
             resolve(patchId);
         }
     }
+}
+
+RCT_EXPORT_METHOD(
+  registerReceivers:(NSString *)audioControllerId
+  patchId:(NSString *)patchId
+  receivers:(NSDictionary *)receivers
+  resolve: (RCTPromiseResolveBlock) resolve
+  reject:(RCTPromiseRejectBlock)reject)
+{
+    /* iterate the receivers */
+    for (NSString* key in receivers) {
+        Float32 toSend = [[receivers objectForKey:key] floatValue];
+        [PdBase sendFloat:toSend toReceiver:key];
+    }
+    resolve(receivers);
 }
 
 @end

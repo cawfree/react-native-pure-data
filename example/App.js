@@ -1,8 +1,6 @@
 import React, {useState} from "react";
 import {StyleSheet, Text, View, SafeAreaView, TouchableOpacity} from "react-native";
-
-// TODO: refactor top-level root
-import {AudioController, Patch} from "react-native-pure-data/src";
+import {AudioController, Patch} from "react-native-pure-data";
 
 import osc from "./patches/osc.pd";
 
@@ -12,6 +10,7 @@ const styles = StyleSheet.create({
 
 export default () => {
   const [active, setActive] = useState(false);
+  const [onOff, setOnOff] = useState(true);
   return (
     <View
       style={StyleSheet.absoluteFill}
@@ -27,13 +26,21 @@ export default () => {
             children={active ? "Active" : "Inactive"}
           />
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => setOnOff(!onOff)}
+        >
+          <Text
+            children={onOff ? "On" : "Off"}
+          />
+        </TouchableOpacity>
+
       </View>
       <AudioController
         active={active}
       >
         <Patch
           source={osc}
-          onOff={1}
+          onOff={onOff ? 1 : 0}
         />
       </AudioController>
       <SafeAreaView />

@@ -5,7 +5,11 @@ import resolveAssetSource from "react-native/Libraries/Image/resolveAssetSource"
 
 const {PureData: RNPureData} = NativeModules;
 
-const {registerAudioController, registerPatch: nativeRegisterPatch} = RNPureData;
+const {
+  registerAudioController,
+  registerPatch: nativeRegisterPatch,
+  registerReceivers: nativeRegisterReceivers,
+} = RNPureData;
 
 const registerPatch = (audioControllerId, patchId, source) => Promise
   .resolve()
@@ -19,12 +23,16 @@ const registerPatch = (audioControllerId, patchId, source) => Promise
       return axios({url, method: "get"});
     },
   )
-  .then(({data}) => nativeRegisterPatch(audioControllerId, patchId, data))
-  .then(e => console.warn('finished native',e));
+  .then(({data}) => nativeRegisterPatch(audioControllerId, patchId, data));
+
+const registerReceivers = (audioControllerId, patchId, receivers) => Promise
+  .resolve()
+  .then(() => nativeRegisterReceivers(audioControllerId, patchId, receivers));
 
 const PureData = Object.freeze({
   registerAudioController,
   registerPatch,
+  registerReceivers,
 });
 
 export default () => PureData;

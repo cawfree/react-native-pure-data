@@ -8,8 +8,8 @@ import {useAudioController, usePureData} from "../hooks";
 
 const Patch = ({source, ...extraProps}) => {
   const [id] = useState(nanoid);
-  const {id: audioControllerId} = useAudioController();
-  const {registerPatch} = usePureData();
+  const {id: audioControllerId, active: controllerIsActive} = useAudioController();
+  const {registerPatch, registerReceivers} = usePureData();
   useDeepCompareEffect(
     () => {
       if (!!source) {
@@ -21,19 +21,20 @@ const Patch = ({source, ...extraProps}) => {
   );
   useDeepCompareEffect(
     () => {
-      const receivers = Object.entries(extraProps);
-      const validReceivers = receivers
-        .filter(([_, v]) => typeCheck("Number", v));
-      if (receivers.length !== validReceivers.length) {
-        console.warn(`Patch receiver props must be a Number. Non-numeric definitions will be ignored.`);
-      }
-      if (validReceivers.length > 0) {
-        const toSend = Object.fromEntries(validReceivers);
-        console.warn('would send', toSend);
+      if (controllerIsActive) {
+        const receivers = Object.entries(extraProps);
+        const validReceivers = receivers
+          .filter(([_, v]) => typeCheck("Number", v));
+        if (receivers.length !== validReceivers.length) {
+          console.warn(`Patch receiver props must be a Number. Non-numeric definitions will be ignored.`);
+        }
+        if (validReceivers.length > 0) {
+          registerReceivers(audioControllerId, id, Object.fromEntries(validReceivers));
+        }
       }
       return undefined;
     },
-    [audioControllerId, id, extraProps],
+    [controllerIsActive, audioControllerId, id, extraProps, registerReceivers],
   );
   return null;
 };
