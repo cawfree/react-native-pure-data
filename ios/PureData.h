@@ -2,5 +2,5 @@
 #import "PdAudioController.h"
 
 @interface PureData : NSObject <RCTBridgeModule>
-  @property (strong, nonatomic) PdAudioController *pd;
+  @property (strong, nonatomic) NSMutableDictionary *audioControllers;
 @end

@@ -1,5 +1,5 @@
-import { NativeModules } from 'react-native';
+import {NativeModules} from 'react-native';
 
-const { PureData } = NativeModules;
+const {PureData} = NativeModules;
 
 export default PureData;
