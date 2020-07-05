@@ -2,7 +2,9 @@ import React, {useState} from "react";
 import {StyleSheet, Text, View, SafeAreaView, TouchableOpacity} from "react-native";
 
 // TODO: refactor top-level root
-import {AudioController} from "react-native-pure-data/src";
+import {AudioController, Patch} from "react-native-pure-data/src";
+
+import osc from "./patches/osc.pd";
 
 const styles = StyleSheet.create({
   container: {flex: 1},
@@ -28,7 +30,12 @@ export default () => {
       </View>
       <AudioController
         active={active}
-      />
+      >
+        <Patch
+          source={osc}
+          onOff={1}
+        />
+      </AudioController>
       <SafeAreaView />
     </View>
   );

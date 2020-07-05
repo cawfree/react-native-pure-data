@@ -1,3 +1,5 @@
+const metroDefault = require('metro-config/src/defaults/defaults.js');
+
 // metro.config.js
 //
 // with multiple workarounds for this issue with symlinks:
@@ -20,7 +22,8 @@ module.exports = {
     extraNodeModules: new Proxy(
       {},
       { get: (_, name) => path.resolve('.', 'node_modules', name) }
-    )
+    ),
+    assetExts: metroDefault.assetExts.concat(['pd']),
   },
 
   // quick workaround for another issue with symlinks
