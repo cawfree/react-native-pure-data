@@ -8,7 +8,7 @@ import {AudioControllerContext} from "../contexts";
 
 const AudioController = ({active, sampleRate, numberOfChannels, inputEnabled, mixingEnabled, ...extraProps}) => {
   const [id] = useState(nanoid);
-  const {registerAudioController, unregisterAudioController} = usePureData();
+  const {registerAudioController} = usePureData();
 
   const audioProps = Object.freeze({active, sampleRate, numberOfChannels, inputEnabled, mixingEnabled});
 
@@ -22,9 +22,9 @@ const AudioController = ({active, sampleRate, numberOfChannels, inputEnabled, mi
         console.warn(`Sorry, the mixingEnabled prop is not currently supported. Your supplied value will be ignored.`);
       }
       registerAudioController(id, audioProps);
-      return () => unregisterAudioController(id);
+      return undefined;
     },
-    [id, registerAudioController, unregisterAudioController, audioProps],
+    [id, registerAudioController, audioProps],
   ); 
 
   return (
