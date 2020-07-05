@@ -12,33 +12,33 @@ export default () => {
   const [active, setActive] = useState(true);
   const [onOff, setOnOff] = useState(true);
   return (
-    <View
-      style={StyleSheet.absoluteFill}
+    <AudioController
+      active={active}
     >
-      <ScrollView
-        style={styles.container}
+      <View
+        style={StyleSheet.absoluteFill}
       >
-        <SafeAreaView />
-        <Switch
-          onChange={() => setActive(!active)}
-          value={active}
-        />
-        <TouchableOpacity
-          onPress={() => setOnOff(!onOff)}
+        <ScrollView
+          style={styles.container}
         >
-          <Text
-            children={onOff ? "On" : "Off"}
+          <SafeAreaView />
+          <Switch
+            onChange={() => setActive(!active)}
+            value={active}
           />
-        </TouchableOpacity>
-        <SafeAreaView />
-      </ScrollView>
-      <AudioController
-        active={active}
-      >
-        <Osc
-          onOff={onOff}
-        />
-      </AudioController>
-    </View>
+          <TouchableOpacity
+            onPress={() => setOnOff(!onOff)}
+          >
+            <Text
+              children={onOff ? "On" : "Off"}
+            />
+          </TouchableOpacity>
+          <Osc
+            onOff={onOff}
+          />
+          <SafeAreaView />
+        </ScrollView>
+      </View>
+    </AudioController>
   );
 };

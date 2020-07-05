@@ -1,12 +1,12 @@
-#N canvas 367 176 450 301 12;
+#N canvas 464 27 450 301 12;
 #X obj 120 98 *~ 0.25;
 #X obj 120 128 *~;
 #X obj 120 158 dac~;
-#X obj 295 38 s onOff;
-#X obj 190 109 r onOff;
-#X obj 282 8 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 53 98 s onOff;
+#X obj 183 109 r onOff;
+#X obj 53 68 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
-#X obj 74 29 osc~ 500;
+#X obj 120 70 osc~ 1000;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 1 0 2 1;

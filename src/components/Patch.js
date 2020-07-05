@@ -7,7 +7,7 @@ import resolveAssetSource from "react-native/Libraries/Image/resolveAssetSource"
 
 import {useAudioController, usePureData} from "../hooks";
 
-const Patch = ({source, ...extraProps}) => {
+const Patch = ({source, children, ...extraProps}) => {
   const [id] = useState(nanoid);
   const [sync, setSync] = useState(new Date());
   const {id: audioControllerId, active: controllerIsActive, sync: controllerSync} = useAudioController();
@@ -19,6 +19,7 @@ const Patch = ({source, ...extraProps}) => {
     () => () => unregisterPatch(audioControllerId, id),
     [audioControllerId, id, setSync],
   );
+
   // TODO: use the actual contents for the deep comparison thing...
   useDeepCompareEffect(
     () => {
@@ -45,7 +46,11 @@ const Patch = ({source, ...extraProps}) => {
     },
     [controllerIsActive, audioControllerId, id, extraProps, registerReceivers, controllerSync, sync],
   );
-  return null;
+  return (
+    <React.Fragment
+      children={children}
+    />
+  );
 };
 
 Patch.propTypes = {
