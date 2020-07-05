@@ -21,6 +21,7 @@ export default () => (
       />
     </View>
     <AudioController
+      active
     />
     <SafeAreaView />
   </View>

@@ -4,13 +4,14 @@ import {NativeModules} from "react-native";
 const {PureData: RNPureData} = NativeModules;
 
 // TODO: refactor
-const {sampleMethod} = RNPureData;
+const {registerAudioController: nativeRegisterAudioController} = RNPureData;
 
+// TODO: probably need to type check specific props here!
 const registerAudioController = (id, {...audioProps}) => Promise
   .resolve()
   .then(() => console.warn('register audio props', id, audioProps))
-  .then(() => sampleMethod("123", 3, () => console.warn('fn call')))
-  .then(() => console.warn('called'));
+  .then(() => nativeRegisterAudioController(id, audioProps))
+  .then((e) => console.warn('called', e));
 
 const unregisterAudioController = id => Promise
   .resolve()
