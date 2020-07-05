@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import {StyleSheet, Text, View, SafeAreaView, TouchableOpacity} from "react-native";
-import {AudioController, Patch} from "react-native-pure-data";
+import {AudioController} from "react-native-pure-data";
 
-import osc from "./patches/osc.pd";
+import {Osc} from "./components";
 
 const styles = StyleSheet.create({
   container: {flex: 1},
@@ -33,14 +33,12 @@ export default () => {
             children={onOff ? "On" : "Off"}
           />
         </TouchableOpacity>
-
       </View>
       <AudioController
         active={active}
       >
-        <Patch
-          source={osc}
-          onOff={onOff ? 1 : 0}
+        <Osc
+          onOff={onOff}
         />
       </AudioController>
       <SafeAreaView />
