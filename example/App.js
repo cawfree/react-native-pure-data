@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {StyleSheet, Text, View, SafeAreaView, TouchableOpacity, ScrollView, Switch} from "react-native";
+import {StyleSheet, Text, View, SafeAreaView, ScrollView, Switch} from "react-native";
 import {AudioController} from "react-native-pure-data";
 
 import {Osc} from "./components";
@@ -9,8 +9,7 @@ const styles = StyleSheet.create({
 });
 
 export default () => {
-  const [active, setActive] = useState(true);
-  const [onOff, setOnOff] = useState(true);
+  const [active, setActive] = useState(false);
   return (
     <AudioController
       active={active}
@@ -26,15 +25,8 @@ export default () => {
             onChange={() => setActive(!active)}
             value={active}
           />
-          <TouchableOpacity
-            onPress={() => setOnOff(!onOff)}
-          >
-            <Text
-              children={onOff ? "On" : "Off"}
-            />
-          </TouchableOpacity>
           <Osc
-            onOff={onOff}
+            onOff
           />
           <SafeAreaView />
         </ScrollView>
