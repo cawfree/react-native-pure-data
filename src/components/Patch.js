@@ -1,23 +1,32 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import useDeepCompareEffect from "use-deep-compare-effect";
 import {typeCheck} from "type-check";
 import {nanoid} from "nanoid/non-secure";
+import resolveAssetSource from "react-native/Libraries/Image/resolveAssetSource";
 
 import {useAudioController, usePureData} from "../hooks";
 
 const Patch = ({source, ...extraProps}) => {
   const [id] = useState(nanoid);
+  const [sync, setSync] = useState(new Date());
   const {id: audioControllerId, active: controllerIsActive, sync: controllerSync} = useAudioController();
-  const {registerPatch, registerReceivers} = usePureData();
+  const {registerPatch, unregisterPatch, registerReceivers} = usePureData();
+
+  const resolvedAssetSource = (!!source) ? resolveAssetSource(source) : null;
+
+  useEffect(
+    () => () => unregisterPatch(audioControllerId, id),
+    [audioControllerId, id, setSync],
+  );
+  // TODO: use the actual contents for the deep comparison thing...
   useDeepCompareEffect(
     () => {
-      if (!!source) {
-        registerPatch(audioControllerId, id, source);
-      }
+      registerPatch(audioControllerId, id, resolvedAssetSource)
+        .then(() => setSync(new Date()));
       return undefined;
     },
-    [audioControllerId, id, source, registerPatch],
+    [audioControllerId, id, resolvedAssetSource, unregisterPatch, registerPatch],
   );
   useDeepCompareEffect(
     () => {
@@ -34,7 +43,7 @@ const Patch = ({source, ...extraProps}) => {
       }
       return undefined;
     },
-    [controllerIsActive, audioControllerId, id, extraProps, registerReceivers, controllerSync],
+    [controllerIsActive, audioControllerId, id, extraProps, registerReceivers, controllerSync, sync],
   );
   return null;
 };

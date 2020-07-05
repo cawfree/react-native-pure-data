@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import useDeepCompareEffect from "use-deep-compare-effect";
 import {nanoid} from "nanoid/non-secure";
@@ -9,9 +9,17 @@ import {AudioControllerContext} from "../contexts";
 const AudioController = ({active, sampleRate, numberOfChannels, inputEnabled, mixingEnabled, ...extraProps}) => {
   const [id] = useState(nanoid);
   const [sync, setSync] = useState(new Date());
-  const {registerAudioController} = usePureData();
+  const {registerAudioController, unregisterAudioController} = usePureData();
 
   const audioProps = Object.freeze({active, sampleRate, numberOfChannels, inputEnabled, mixingEnabled});
+
+  useEffect(
+    () => {
+      return () => unregisterAudioController(id)
+        .then(() => setSync(new Date()));
+    },
+    [id, setSync],
+  );
 
   useDeepCompareEffect(
     () => {

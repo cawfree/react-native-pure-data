@@ -54,13 +54,46 @@ RCT_EXPORT_METHOD(
 }
 
 RCT_EXPORT_METHOD(
+  unregisterAudioController:(NSString *)audioControllerId
+  resolve: (RCTPromiseResolveBlock) resolve
+  reject:(RCTPromiseRejectBlock)reject)
+{
+    PdAudioController* audioController = [self.audioControllers objectForKey:audioControllerId];
+    
+    if (!audioController) {
+        reject(@"FailedToUnregisterAudioController", @"The requested AudioController does not exist.", [NSError alloc]);
+    } else {
+        /* deactivate */
+        audioController.active = NO;
+        /* remove instance */
+        [self.audioControllers removeObjectForKey:audioControllerId];
+        /* mark as unregistered */
+        resolve(audioControllerId);
+    }
+}
+
+RCT_EXPORT_METHOD(
   registerPatch:(NSString *)audioControllerId
   patchId:(NSString *)patchId
   patchData:(NSString *)patchData
   resolve: (RCTPromiseResolveBlock) resolve
   reject:(RCTPromiseRejectBlock)reject)
 {
+    /* init dict where not exist */
+    if (!self.pdFiles) self.pdFiles = [[NSMutableDictionary alloc]initWithCapacity:1];
+    
+    /* does the patch already exist? */
+    if ([self.pdFiles objectForKey:patchId]) {
+        NSValue* value = [self.pdFiles objectForKey:patchId];
+        /* close the file */
+        [PdBase closeFile:[value pointerValue]];
+        /* remove instance */
+        [self.pdFiles removeObjectForKey:patchId];
+    }
+    
+    /* compute the patch name */
     NSString *patchName = [NSString stringWithFormat:@"%@.pd", patchId];
+    
     /* temporarily save the patch */
     NSString *tmpDirectory = NSTemporaryDirectory();
     NSString *tmpFile = [tmpDirectory stringByAppendingPathComponent:patchName];
@@ -75,9 +108,30 @@ RCT_EXPORT_METHOD(
         if (!patch) {
             reject(@"FailedToOpenPatch", @"It is not possible to read this patch file.", [NSError alloc]);
         } else {
+            [self.pdFiles setObject:[NSValue valueWithPointer:patch] forKey:patchId];
             /* confirm the patch is now ready */
             resolve(patchId);
         }
+    }
+}
+
+RCT_EXPORT_METHOD(
+  unregisterPatch:(NSString *)audioControllerId
+  patchId:(NSString *)patchId
+  resolve: (RCTPromiseResolveBlock) resolve
+  reject:(RCTPromiseRejectBlock)reject)
+{
+    NSValue* value = [self.pdFiles objectForKey:patchId];
+    
+    if (!value) {
+        reject(@"FailedToUnregisterPatch", @"The requested Patch does not exist.", [NSError alloc]);
+    } else {
+        /* close the file */
+        [PdBase closeFile:[value pointerValue]];
+        /* remove instance */
+        [self.pdFiles removeObjectForKey:patchId];
+        /* mark as unregistered */
+        resolve(patchId);
     }
 }
 
