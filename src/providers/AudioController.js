@@ -8,6 +8,7 @@ import {AudioControllerContext} from "../contexts";
 
 const AudioController = ({active, sampleRate, numberOfChannels, inputEnabled, mixingEnabled, ...extraProps}) => {
   const [id] = useState(nanoid);
+  const [sync, setSync] = useState(new Date());
   const {registerAudioController} = usePureData();
 
   const audioProps = Object.freeze({active, sampleRate, numberOfChannels, inputEnabled, mixingEnabled});
@@ -21,10 +22,11 @@ const AudioController = ({active, sampleRate, numberOfChannels, inputEnabled, mi
       if (mixingEnabled !== false) {
         console.warn(`Sorry, the mixingEnabled prop is not currently supported. Your supplied value will be ignored.`);
       }
-      registerAudioController(id, audioProps);
+      registerAudioController(id, audioProps)
+        .then(() => setSync(new Date()));
       return undefined;
     },
-    [id, registerAudioController, audioProps],
+    [id, registerAudioController, setSync, audioProps],
   ); 
 
   return (
@@ -36,6 +38,8 @@ const AudioController = ({active, sampleRate, numberOfChannels, inputEnabled, mi
         mixingEnabled: false,
         /* context propagation */
         id,
+        /* sync */
+        sync,
       }}
     >
       <React.Fragment

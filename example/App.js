@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
 });
 
 export default () => {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(true);
   const [onOff, setOnOff] = useState(true);
   return (
     <View

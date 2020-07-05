@@ -8,7 +8,7 @@ import {useAudioController, usePureData} from "../hooks";
 
 const Patch = ({source, ...extraProps}) => {
   const [id] = useState(nanoid);
-  const {id: audioControllerId, active: controllerIsActive} = useAudioController();
+  const {id: audioControllerId, active: controllerIsActive, sync: controllerSync} = useAudioController();
   const {registerPatch, registerReceivers} = usePureData();
   useDeepCompareEffect(
     () => {
@@ -34,7 +34,7 @@ const Patch = ({source, ...extraProps}) => {
       }
       return undefined;
     },
-    [controllerIsActive, audioControllerId, id, extraProps, registerReceivers],
+    [controllerIsActive, audioControllerId, id, extraProps, registerReceivers, controllerSync],
   );
   return null;
 };
