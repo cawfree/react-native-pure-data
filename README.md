@@ -83,6 +83,72 @@ Once the library is installed, quit the Metro Bundler (if already running) and f
 ```bash
 react-native run-android
 ```
+
+## ✍️ Example
+
+[`react-native-pure-data`](https://github.com/cawfree/react-native-pure-data) exposes just two [**Component**](https://reactjs.org/docs/react-component.html)s; `AudioController` and `Patch`. The former is used for general sound output configuration, and the latter is used to load and interact with a patch written in Pure Data.
+
+The simplest example is a patch which does not rely on any data from your `App.js`; you'll see here, that all we need to do is define an `<AudioController />` at the root of the application, and declare the `Patch`'s file source.
+
+```javascript
+import React from "react";
+import {AudioController, Patch} from "react-native-pure-data";
+
+import SomePatch from "./patches/some-patch.pd";
+
+export default () => (
+  <AudioController
+    active
+  >
+    <Patch
+      source={SomePatch}
+    />
+  </AudioController>
+);
+```
+
+However, Pure Data is uses an asynchronous, [message-driven]() protocol. This normally means that imported patches will need to be either triggered or configured by your runtime logic.
+
+To communicate with a loaded patch from your app, all you have to do is specify additional props on the `Patch` component. These will be synchronously routed to corresponding receivers in the Pure Data patch whenever the component is re-rendered:
+
+```
+import React, {useState, useEffect} from "react";
+import {AudioController, Patch} from "react-native-pure-data";
+
+import SomePatch from "./patches/some-patch.pd";
+
+export default () => {
+  const [frequency, setFrequency] = useState(440);
+  useEffect(
+    () => {
+      /* every 1000ms, set a new frequency */
+      const i = setInterval(
+        () => setFrequency(Math.random() * 1000),
+        1000,
+      );
+      return () => clearInterval(i);
+    },
+    [],
+  );
+  return (
+    <AudioController
+      active
+    >
+      <Patch
+        source={SomePatch}
+        nextFrequency={frequency}
+      />
+    </AudioController>
+  );
+};
+```
+
+In the example above, a random frequency will be calculated and tranmitted to the corresponding receiver on the diagram. In this case, the receiver would be called "nextFrequency", which would be declared using a Pure Data [Object](https://puredata.info/docs/ListOfPdExternals) with the definition `[r nextFrequency]`. The convention used here is that for every numeric prop, the name of that prop corresponds to the message receiver within the patch.
+
+Therefore, if we defined an additional prop named `someOtherFrequency={Math.random()}`, whenever the component is re-rendered we would send a message to the receiver `[r someOtherFrequency]` within the patch.
+
+Please check out the [**Example App**](https://github.com/cawfree/react-native-pure-data) for further details.
+
 ## ✨ Resources 
 
   - [**Awesome Pure Data**](https://github.com/virtualtam/awesome-puredata)

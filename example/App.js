@@ -25,7 +25,9 @@ export default () => {
             onChange={() => setActive(!active)}
             value={active}
           /> 
-          <SheddingHydrogen />
+          <Khaos
+            onOff
+          />
           <SafeAreaView />
         </View>
       </View>
