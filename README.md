@@ -28,8 +28,8 @@ Please take care to minimize the risk of hearing damage or loss as much as possi
 And remember,
 
 > With great power, comes great responsibility.
+> [- Linus Torvalds]()
 
-[- Linus Torvalds]()
 
 ## 🚀 Getting Started
 
