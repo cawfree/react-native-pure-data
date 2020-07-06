@@ -3,8 +3,8 @@
 <p align="center">
   <img
     src="./public/logo.png"
-    width="200"
-    height="100"
+    width="300"
+    height="150"
   />
 </p>
 
