@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {StyleSheet, Text, View, SafeAreaView, ScrollView, Switch} from "react-native";
 import {AudioController} from "react-native-pure-data";
 
-import {Osc, BasicSynth, Idiotique, SheddingHydrogen, Helicopter} from "./components";
+import {Osc, BasicSynth, Idiotique, SheddingHydrogen, Helicopter, Khaos} from "./components";
 
 const styles = StyleSheet.create({
   container: {flex: 1, padding: 15},
@@ -25,15 +25,17 @@ export default () => {
             onChange={() => setActive(!active)}
             value={active}
           /> 
-          <Helicopter
-            rotorSpeed={0.05}
-          />
+          <Khaos />
           <SafeAreaView />
         </View>
       </View>
     </AudioController>
   );
 };
+
+//<Helicopter
+//            rotorSpeed={0.1}
+//          />
 
 //<SheddingHydrogen
 //            onOff
