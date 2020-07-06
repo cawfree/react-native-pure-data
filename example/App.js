@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {StyleSheet, Text, View, SafeAreaView, ScrollView, Switch} from "react-native";
 import {AudioController} from "react-native-pure-data";
 
-import {Osc, BasicSynth} from "./components";
+import {Osc, BasicSynth, Idiotique} from "./components";
 
 const styles = StyleSheet.create({
   container: {flex: 1, padding: 15},
@@ -25,9 +25,7 @@ export default () => {
             onChange={() => setActive(!active)}
             value={active}
           />
-          <BasicSynth
-          />
-          <Osc
+          <Idiotique
             onOff
           />
           <SafeAreaView />
@@ -36,3 +34,9 @@ export default () => {
     </AudioController>
   );
 };
+
+//<BasicSynth
+///>
+//<Osc
+//  onOff
+///>
