@@ -5,6 +5,7 @@ import {typeCheck} from "type-check";
 import {nanoid} from "nanoid/non-secure";
 import resolveAssetSource from "react-native/Libraries/Image/resolveAssetSource";
 
+import {PatchContext} from "../contexts";
 import {useAudioController, usePureData} from "../hooks";
 
 const Patch = ({source, children, ...extraProps}) => {
@@ -47,7 +48,15 @@ const Patch = ({source, children, ...extraProps}) => {
     [controllerIsActive, audioControllerId, id, extraProps, registerReceivers, controllerSync, sync],
   );
   return (
-    <React.Fragment
+    <PatchContext.Provider
+      value={{
+        // TODO: mechanisms for sending bangs etc
+        ...{},
+        /* context propagation */
+        id,
+        /* sync */
+        sync,
+      }}
       children={children}
     />
   );

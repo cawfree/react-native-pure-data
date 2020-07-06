@@ -10,8 +10,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "native-base": "^2.13.12",
     "react": "16.9.0",
+    "react-native": "0.61.2",
     "react-native-pure-data": "../"
   },
   "devDependencies": {

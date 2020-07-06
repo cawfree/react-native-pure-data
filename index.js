@@ -1,1 +1,1 @@
-export {AudioController, Patch} from "./src";
+export {AudioController, Patch, usePatch} from "./src";

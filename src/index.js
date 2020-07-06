@@ -1,2 +1,2 @@
-export {AudioController} from "./providers";
-export {Patch} from "./components";
+export {AudioController, Patch} from "./providers";
+export {usePatch} from "./hooks";
