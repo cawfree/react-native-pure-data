@@ -1,26 +1,32 @@
 # react-native-pure-data
 
-A native wrapper for [`libpd-ios`]() and [`libpd-android`](), which enables you to rapidly prototype [**DSP**]() algorithms described using [**Pure Data (Pd)**](). [Pure Data]() is an industry standard open source visual programming language capable of synthesising audiovisual effects.
+A native wrapper for [`libpd-ios`]() and [`libpd-android`](), which enables you to rapidly prototype [**DSP**]() algorithms described using [**Pure Data**], an industry standard open source visual programming language capable of synthesising audiovisual effects.
 
-[`**react-native-pure-data**`]() enables the synthesis of generative audio, which helps developers achieve dynamic sound at runtime. This is useful for games, music production and [communications]().
+[`react-native-pure-data`]() enables the synthesis of generative audio, which helps developers achieve dynamic sound at runtime. This is useful for games, music production and [communications]().
 
-  - Capabilities
+  - **Key Features**
     - [**Patches**]() in Pure Data can be interacted with via [**React**]() component props.
-    - Multiple simultaneous patches can be loaded.
-    - Supports hot reloading, so DSP algorithms can be prototyped directly using Pure Data and then executed natively on an Android/iOS device or emulator.
-    - Patches respect the [**Component Lifecycle**](), so they can be mounted or unmounted as expected.
+    - Simultaneous patche execution.
+    - Supports [**hot reloading**](), so DSP algorithms can be prototyped directly using Pure Data's interface and then executed concurrently on an Android/iOS device or emulator.
+    - Loaded patches respect the [**Component Lifecycle**](), so they can be mounted or unmounted as expected.
 
 ## ⚠️ Warning
 
-**Please be cautious when prototyping using this library.**
+**Please be extremely cautious when prototyping using this library.**
 
-Pure Data is capable of generating high amplitude sound waves, and can [**damage your hearing if you choose to listen using headphones**](). Please take care to minimize the risk of hearing damage or loss as much as possible by **playing back on external speakers at a reduced volume whenever prototyping with new patches or props**. In addition, you must **always** consider the volume of the end user's device.
+Pd is capable of generating high amplitude sound waves, which can [**damage your hearing if you choose to listen using headphones**]().
+
+Please take care to minimize the risk of hearing damage or loss as much as possible by playing back on external speakers at a reduced volume whenever prototyping with new patches or props. In addition, you must **always** consider the volume of the end user's device.
+
+And remember,
 
 > With great power, comes great responsibility.
 
-[_Linus Torvalds_]()
+[- Linus Torvalds]()
 
 ## 🚀 Getting Started
+
+### Installing
 
 Using [`npm`]():
 
@@ -34,9 +40,11 @@ Using [`yarn`]():
 yarn add react-native-pure-data
 ```
 
-For versions less than [**React Native 0.60**](), be sure to execute `react-native link` to make the native library dependencies visible to your compiled application.
+For versions of [**React Native**]() less than [**0.60**](), after installation has complete you must execute `react-native link` to make the native library dependencies visible to your compiled application.
 
-Finally, you'll [need to](https://github.com/facebook/metro/issues/367) update your [`metro.config.js`]() to help the [**Metro Bundler **]() load your patches:
+### Updating metro.config.js
+
+Once installed, you'll [need to](https://github.com/facebook/metro/issues/367) update your [`metro.config.js`]() to help the [**Metro Bundler **]() load your patches:
 
 ```diff
 +const metroDefault = require('metro-config/src/defaults/defaults.js');
@@ -66,8 +74,9 @@ Once the library is installed, quit the Metro Bundler (if already running) and f
 ```bash
 react-native run-android
 ```
-## 😎 Resources 
+## ✨ Helpful Resources 
 
+  - [Awesome Pure Data](https://github.com/virtualtam/awesome-puredata)
   - [PatchStorage](https://patchstorage.com)
   - [PdPatchRepo](http://pdpatchrepo.info/patches/patch/14)
 
