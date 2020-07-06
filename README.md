@@ -1,14 +1,19 @@
 # react-native-pure-data
 
-A native wrapper for [`libpd-ios`]() and [`libpd-android`](), which enables you to rapidly prototype [**DSP**]() algorithms described using [**Pure Data**], an industry standard open source visual programming language capable of synthesising audiovisual effects.
+<p align="center">
+  <img src="./public/logo.png"/>
+</p>
+
+A native wrapper for [`libpd-ios`]() and [`libpd-android`](), which enables you to rapidly prototype [**DSP**]() algorithms described using [**Pure Data**](), an industry standard open source visual programming language capable of synthesising audiovisual effects.
 
 [`react-native-pure-data`]() enables the synthesis of generative audio, which helps developers achieve dynamic sound at runtime. This is useful for games, music production and [communications]().
 
-  - **Key Features**
-    - [**Patches**]() in Pure Data can be interacted with via [**React**]() component props.
-    - Simultaneous patche execution.
-    - Supports [**hot reloading**](), so DSP algorithms can be prototyped directly using Pure Data's interface and then executed concurrently on an Android/iOS device or emulator.
-    - Loaded patches respect the [**Component Lifecycle**](), so they can be mounted or unmounted as expected.
+### Key Features
+
+  - [**Patches**]() in Pure Data can be interacted with via [**React**]() component props.
+  - Simultaneous patche execution.
+  - Supports [**hot reloading**](), so DSP algorithms can be prototyped directly using Pure Data's interface and then executed concurrently on an Android/iOS device or emulator.
+  - Loaded patches respect the [**Component Lifecycle**](), so they can be mounted or unmounted as expected.
 
 ## ⚠️ Warning
 
