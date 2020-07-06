@@ -107,7 +107,7 @@ export default () => (
 );
 ```
 
-However, Pure Data is uses an asynchronous, [message-driven]() protocol. This normally means that imported patches will need to be either triggered or configured by your runtime logic.
+However, Pure Data is uses an asynchronous, [message-driven](https://en.wikipedia.org/wiki/Flow-based_programming) protocol. This normally means that imported patches will need to be either triggered or configured by your runtime logic.
 
 To communicate with a loaded patch from your app, all you have to do is specify additional props on the `Patch` component. These will be synchronously routed to corresponding receivers in the Pure Data patch whenever the component is re-rendered:
 
