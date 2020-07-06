@@ -1,7 +1,11 @@
 # react-native-pure-data
 
 <p align="center">
-  <img src="./public/logo.png"/>
+  <img
+    src="./public/logo.png"
+    width="200"
+    height="100"
+  />
 </p>
 
 A native wrapper for [`libpd-ios`]() and [`libpd-android`](), which enables you to rapidly prototype [**DSP**]() algorithms described using [**Pure Data**](), an industry standard open source visual programming language capable of synthesising audiovisual effects.
