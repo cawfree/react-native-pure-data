@@ -143,9 +143,11 @@ export default () => {
 };
 ```
 
-In the example above, a random frequency will be calculated and tranmitted to the corresponding receiver on the diagram. In this case, the receiver would be called "nextFrequency", which would be declared using a Pure Data [**Object**](https://puredata.info/docs/ListOfPdExternals) with the definition `[r nextFrequency]`. The convention used here is that for every numeric prop, the name of that prop corresponds to the message receiver within the patch.
+In the example above, a random frequency will be calculated and transmitted to the corresponding receiver on the diagram. In this case, the receiver would be called "nextFrequency", which would be declared using a Pure Data [**Object**](https://puredata.info/docs/ListOfPdExternals) with the definition `[r nextFrequency]`.
 
-Therefore, if we defined an additional prop named `someOtherFrequency={Math.random()}`, whenever the component is re-rendered we would send a message to the receiver `[r someOtherFrequency]` within the patch.
+The convention used here is that for every numeric prop, the name of that prop corresponds to the message receiver within the patch.
+
+Therefore, if we defined an additional prop named `someOtherFrequency={Math.random()}`, whenever the component is re-rendered we would send a message to the receiver `[r someOtherFrequency]` that existed within the patch. If the receiver does not exist, this is a [**noop**](https://en.wikipedia.org/wiki/NOP_(code)).
 
 Please check out the [**Example App**](https://github.com/cawfree/react-native-pure-data) for further details.
 
