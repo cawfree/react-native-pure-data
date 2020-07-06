@@ -33,7 +33,7 @@ And remember,
 
 ## 🚀 Getting Started
 
-### Installing
+### 1. Installing
 
 Using [`npm`]():
 
@@ -49,7 +49,7 @@ yarn add react-native-pure-data
 
 For versions of [**React Native**]() less than [**0.60**](), after installation has complete you must execute `react-native link` to make the native library dependencies visible to your compiled application.
 
-### Updating metro.config.js
+### 2. Updating metro.config.js
 
 Once installed, you'll [need to](https://github.com/facebook/metro/issues/367) update your [`metro.config.js`]() to help the [**Metro Bundler **]() load your patches:
 
@@ -65,7 +65,9 @@ Once installed, you'll [need to](https://github.com/facebook/metro/issues/367) u
 
 This will enable [**hot loading**](), so you can modify your patches even whilst they're being rendered by the app.
 
-### iOS
+### 3. Runtime Specific
+
+#### 3.1 iOS
 
 After installing, you should quit the Metro Bundler if it's already running and enter your app's `/ios` directory. Then use:
 
@@ -74,7 +76,7 @@ pod install # update cocoapods
 cd ..
 react-native run-ios
 ```
-### Android
+#### 3.2 Android
 
 Once the library is installed, quit the Metro Bundler (if already running) and finally call:
 
