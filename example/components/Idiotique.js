@@ -6,10 +6,12 @@ import {Patch} from "react-native-pure-data";
 import idiotique from "../patches/idiotique.pd";
 
 const Idiotique = ({onOff}) => (
-  <Patch
-    source={idiotique}
-    onOff={onOff ? 1 : 0}
-  />
+  <>
+    <Patch
+      source={idiotique}
+      onOff={onOff ? 1 : 0}
+    />
+  </>
 );
 
 Idiotique.propTypes = {

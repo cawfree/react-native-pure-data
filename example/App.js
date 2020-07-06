@@ -2,14 +2,14 @@ import React, {useState} from "react";
 import {StyleSheet, Text, View, SafeAreaView, ScrollView, Switch} from "react-native";
 import {AudioController} from "react-native-pure-data";
 
-import {Osc, BasicSynth, Idiotique, SheddingHydrogen} from "./components";
+import {Osc, BasicSynth, Idiotique, SheddingHydrogen, Helicopter} from "./components";
 
 const styles = StyleSheet.create({
   container: {flex: 1, padding: 15},
 });
 
 export default () => {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(true);
   return (
     <AudioController
       active={active}
@@ -25,8 +25,8 @@ export default () => {
             onChange={() => setActive(!active)}
             value={active}
           /> 
-          <SheddingHydrogen
-            onOff
+          <Helicopter
+            rotorSpeed={0.05}
           />
           <SafeAreaView />
         </View>
@@ -35,6 +35,9 @@ export default () => {
   );
 };
 
+//<SheddingHydrogen
+//            onOff
+//          />
 //<Idiotique
 //  onOff
 ///>
