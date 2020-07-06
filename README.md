@@ -111,7 +111,7 @@ However, Pure Data is uses an asynchronous, [message-driven]() protocol. This no
 
 To communicate with a loaded patch from your app, all you have to do is specify additional props on the `Patch` component. These will be synchronously routed to corresponding receivers in the Pure Data patch whenever the component is re-rendered:
 
-```
+```javascript
 import React, {useState, useEffect} from "react";
 import {AudioController, Patch} from "react-native-pure-data";
 
