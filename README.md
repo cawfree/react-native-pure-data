@@ -8,6 +8,8 @@ Make sure you're not wearing headphones! Try to debug at a safe volume.
 
 [here](https://github.com/facebook/metro/issues/367)
 
+[patches](http://pdpatchrepo.info/patches/patch/14)
+
 ```diff
 + const metroDefault = require('metro-config/src/defaults/defaults.js');
 
