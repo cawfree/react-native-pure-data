@@ -49,7 +49,7 @@ yarn add react-native-pure-data
 
 For versions of [**React Native**]() less than [**0.60**](), after installation has complete you must execute `react-native link` to make the native library dependencies visible to your compiled application.
 
-### 2. Updating metro.config.js
+### 2. Update `metro.config.js`
 
 Once installed, you'll [need to](https://github.com/facebook/metro/issues/367) update your [`metro.config.js`]() to help the [**Metro Bundler **]() load your patches:
 
@@ -83,11 +83,11 @@ Once the library is installed, quit the Metro Bundler (if already running) and f
 ```bash
 react-native run-android
 ```
-## ✨ Helpful Resources 
+## ✨ Resources 
 
-  - [Awesome Pure Data](https://github.com/virtualtam/awesome-puredata)
-  - [PatchStorage](https://patchstorage.com)
-  - [PdPatchRepo](http://pdpatchrepo.info/patches/patch/14)
+  - [**Awesome Pure Data**](https://github.com/virtualtam/awesome-puredata)
+  - [**PatchStorage**](https://patchstorage.com)
+  - [**PdPatchRepo**](http://pdpatchrepo.info/patches/patch/14)
 
 ## ✌️ Licence
-[MIT]()
+[MIT](./LICENSE.md)
