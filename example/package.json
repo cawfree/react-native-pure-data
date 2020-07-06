@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "16.9.0",
     "react-native": "0.61.2",
+    "react-native-dial": "^1.0.12",
     "react-native-pure-data": "../"
   },
   "devDependencies": {
