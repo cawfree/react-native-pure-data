@@ -183,7 +183,7 @@ PODS:
     - React-cxxreact (= 0.61.2)
     - React-jsi (= 0.61.2)
   - React-jsinspector (0.61.2)
-  - react-native-pure-data (1.0.0):
+  - react-native-pure-data (0.0.1-alpha.0):
     - libpd-ios
     - React
   - react-native-slider (3.0.0):
@@ -335,7 +335,7 @@ SPEC CHECKSUMS:
   React-jsi: 32285a21b1b24c36060493ed3057a34677d58d09
   React-jsiexecutor: 8909917ff7d8f21a57e443a866fd8d4560e50c65
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
-  react-native-pure-data: 766f5670fe09973f1ecf7e5254ae2b747eadc737
+  react-native-pure-data: ef4969c79312ce3bec7238980b52c63be4621668
   react-native-slider: 12bd76d3d568c9c5500825db54123d44b48e4ad4
   React-RCTActionSheet: 89b037c0fb7d2671607cb645760164e7e0c013f6
   React-RCTAnimation: e3cefa93c38c004c318f7ec04b883eb14b8b8235
