@@ -13,7 +13,7 @@ A native wrapper for [`libpd-ios`](https://github.com/libpd/pd-for-ios) and [`li
 ### Key Features
 
   - [**Patches**](https://puredata.info/community/member-downloads/patches) in Pure Data can be interacted with via [**React**]() component props.
-  - Simultaneous patche execution.
+  - Simultaneous patch execution.
   - Supports [**hot reloading**](https://reactnative.dev/blog/2016/03/24/introducing-hot-reloading.html), so DSP algorithms can be prototyped directly using Pure Data's interface and then executed concurrently on an Android/iOS device or emulator.
   - Loaded patches respect the [**Component Lifecycle**](https://reactjs.org/docs/state-and-lifecycle.html), so they can be mounted or unmounted as expected.
 
