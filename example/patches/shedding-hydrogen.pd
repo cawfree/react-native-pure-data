@@ -456,7 +456,7 @@ get the idea - pump it!;
 #X text 943 736 0;
 #X text 952 749 0;
 #X text 956 727 0;
-#X obj 249 -312 r onOff;
+#X obj 249 -312 r onOffSheddingHydrogen;
 #X connect 1 0 3 0;
 #X connect 2 0 3 1;
 #X connect 3 0 108 0;
