@@ -156,7 +156,7 @@ The convention used here is that for every numeric prop, the name of that prop c
 
 Therefore, if we defined an additional prop named `someOtherFrequency={Math.random()}`, whenever the component is re-rendered we would send a message to the receiver `[r someOtherFrequency]` that existed within the patch. If the receiver does not exist, this is a [**noop**](https://en.wikipedia.org/wiki/NOP_(code)).
 
-Please check out the [**Example App**](https://github.com/cawfree/react-native-pure-data) for further details.
+Please check out the [**Example App**](https://github.com/cawfree/react-native-pure-data/tree/master/example) for further details.
 
 ## ✨ Resources 
 
