@@ -10,6 +10,7 @@ import joi from "../patches/joi.pd";
 const styles = StyleSheet.create({
   labelledSwitch: {flexDirection: "row", alignItems: "center", padding: 5},
   labelText: {paddingLeft: 5, fontSize: 15, fontWeight: "bold"},
+  slider: {width: 200, height: 40},
 });
 
 const LabelledSwitch = ({label, value, onChange, ...extraProps}) => (
@@ -30,11 +31,11 @@ const LabelledSwitch = ({label, value, onChange, ...extraProps}) => (
 
 const Joi = () => {
   const [onOff, setOnOff] = useState(false);
-  const [kick, setKick] = useState(false);
-  const [snare, setSnare] = useState(false);
-  const [bass, setBass] = useState(false);
-  const [gamelan, setGamelan] = useState(false);
-  const [lead, setLead] = useState(false);
+  const [kick, setKick] = useState(0);
+  const [snare, setSnare] = useState(0);
+  const [bass, setBass] = useState(0);
+  const [gamelan, setGamelan] = useState(0);
+  const [lead, setLead] = useState(0);
   const [tuning, setTuning] = useState(10);
   return (
     <Label
@@ -75,38 +76,63 @@ const Joi = () => {
           value={onOff}
           onChange={() => setOnOff(!onOff)}
         />
-        <LabelledSwitch
-          label="Kick"
-          value
-          onChange={() => setKick(Math.random())}
-        />
-        <LabelledSwitch
-          label="Snare"
-          value
-          onChange={() => setSnare(Math.random())}
-        />
-        <LabelledSwitch
-          label="Bass"
-          value
-          onChange={() => setBass(Math.random())}
-        />
-        <LabelledSwitch
-          label="Gamelan"
-          value
-          onChange={() => setGamelan(Math.random())}
-        />
-        <LabelledSwitch
-          label="Lead"
-          value
-          onChange={() => setLead(Math.random())}
-        />
         <View
           style={{
             alignItems: "center",
           }}
         >
           <Slider
-            style={{width: 200, height: 40}}
+            style={styles.slider}
+            value={snare}
+            onValueChange={setSnare}
+            step={1}
+            minimumValue={0}
+            maximumValue={100}
+            minimumTrackTintColor="#FFFFFF"
+            maximumTrackTintColor="#000000"
+          />
+          <Slider
+            style={styles.slider}
+            value={bass}
+            onValueChange={setBass}
+            step={1}
+            minimumValue={0}
+            maximumValue={100}
+            minimumTrackTintColor="#FFFFFF"
+            maximumTrackTintColor="#000000"
+          />
+          <Slider
+            style={styles.slider}
+            value={gamelan}
+            onValueChange={setGamelan}
+            step={1}
+            minimumValue={0}
+            maximumValue={10}
+            minimumTrackTintColor="#FFFFFF"
+            maximumTrackTintColor="#000000"
+          />
+          <Slider
+            style={styles.slider}
+            value={lead}
+            onValueChange={setLead}
+            step={0.1}
+            minimumValue={0}
+            maximumValue={1}
+            minimumTrackTintColor="#FFFFFF"
+            maximumTrackTintColor="#000000"
+          />
+          <Slider
+            style={styles.slider}
+            value={kick}
+            onValueChange={setKick}
+            step={1}
+            minimumValue={0}
+            maximumValue={200}
+            minimumTrackTintColor="#FFFFFF"
+            maximumTrackTintColor="#000000"
+          />
+          <Slider
+            style={styles.slider}
             value={tuning}
             onValueChange={setTuning}
             step={1}
@@ -117,7 +143,7 @@ const Joi = () => {
           />
         </View>
       </View>
-    </Label> 
+    </Label>
   );
 };
 

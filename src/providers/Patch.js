@@ -10,6 +10,7 @@ import {useAudioController, usePureData} from "../hooks";
 
 const Patch = ({source, children, ...extraProps}) => {
   const [id] = useState(nanoid);
+  const [buf] = useState([{}]);
   const [sync, setSync] = useState(new Date());
   const {id: audioControllerId, active: controllerIsActive, sync: controllerSync} = useAudioController();
   const {registerPatch, unregisterPatch, registerReceivers} = usePureData();
@@ -35,8 +36,16 @@ const Patch = ({source, children, ...extraProps}) => {
       if (controllerIsActive) {
         const receivers = Object.entries(extraProps);
         const validReceivers = receivers
-          .filter(([_, v]) => typeCheck("Number", v));
-        if (receivers.length !== validReceivers.length) {
+          .filter(([_, v]) => typeCheck("Number", v))
+          /* trigger messages for only the props that have changed */
+          .filter(([k, v]) => (buf[0][k] !== v));
+        const invalidReceivers = receivers
+          .filter(([_, v]) => !typeCheck("Number", v))
+
+        /* reassign */
+        buf[0] = extraProps;
+
+        if (invalidReceivers.length > 0) {
           console.warn(`Patch receiver props must be a Number. Non-numeric definitions will be ignored.`);
         }
         if (validReceivers.length > 0) {
