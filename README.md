@@ -65,20 +65,23 @@ Once installed, you'll [need to](https://github.com/facebook/metro/issues/367) u
 
 This will enable **hot loading**, so you can modify your patches even whilst they're being rendered by the app.
 
+After making this change, you'll need to **restart the bundler.**
+
 ### 3. Runtime Specific
 
 #### 3.1 iOS
 
-After installing, you should quit the Metro Bundler if it's already running and enter your app's `/ios` directory. Then use:
+After installing this library, you'll need reinstall the iOS cocoapods. First, enter your app's `/ios` directory. Then use:
 
 ```bash
 pod install # update cocoapods
 cd ..
 react-native run-ios
 ```
+
 #### 3.2 Android
 
-Once the library is installed, quit the Metro Bundler (if already running) and finally call:
+Finally, you'll need to reinstall the app:
 
 ```bash
 react-native run-android
