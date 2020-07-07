@@ -83,11 +83,7 @@ react-native run-ios
 
 #### 3.2 Android
 
-Finally, you'll need to reinstall the app:
-
-```bash
-react-native run-android
-```
+Android is not yet supported, but will be released **this weekend**.
 
 ## ✍️ Example
 
