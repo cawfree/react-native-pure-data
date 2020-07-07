@@ -1,9 +1,9 @@
-import {useContext} from "react";
+import { useContext } from "react";
 
-import {PatchContext} from "../contexts";
+import { PatchContext } from "../contexts";
 
 export default () => {
-  const {...patchContext} = useContext(Patch);
+  const { ...patchContext } = useContext(Patch);
   // TODO: Sanitize.
   return patchContext;
 };

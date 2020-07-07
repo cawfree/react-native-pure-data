@@ -1,31 +1,22 @@
-import React, {useState} from "react";
-import PropTypes from "prop-types";
-import {View, Text, Switch, Image, StyleSheet} from "react-native";
-import {Patch} from "react-native-pure-data";
-import Label from "react-native-label";
-import Slider from "@react-native-community/slider";
+import React, {useState} from 'react';
+import PropTypes from 'prop-types';
+import {View, Text, Switch, Image, StyleSheet} from 'react-native';
+import {Patch} from 'react-native-pure-data';
+import Label from 'react-native-label';
+import Slider from '@react-native-community/slider';
 
-import joi from "../patches/joi.pd";
+import joi from '../patches/joi.pd';
 
 const styles = StyleSheet.create({
-  labelledSwitch: {flexDirection: "row", alignItems: "center", padding: 5},
-  labelText: {paddingLeft: 5, fontSize: 15, fontWeight: "bold"},
+  labelledSwitch: {flexDirection: 'row', alignItems: 'center', padding: 5},
+  labelText: {paddingLeft: 5, fontSize: 15, fontWeight: 'bold'},
   slider: {width: 200, height: 40},
 });
 
 const LabelledSwitch = ({label, value, onChange, ...extraProps}) => (
-  <View
-    style={styles.labelledSwitch}
-  >
-    <Switch
-      value={value}
-      onChange={onChange}
-      color="#FF0000"
-    />
-    <Text
-      style={styles.labelText}
-      children={label}
-    />
+  <View style={styles.labelledSwitch}>
+    <Switch value={value} onChange={onChange} color="#FF0000" />
+    <Text style={styles.labelText} children={label} />
   </View>
 );
 
@@ -42,18 +33,20 @@ const Joi = () => {
       containerStyle={{
         flex: 1,
         borderRadius: 15,
-        overflow: "hidden",
+        overflow: 'hidden',
       }}
       style={{
         fontSize: 60,
-        fontWeight: "bold",
+        fontWeight: 'bold',
       }}
       title="Joi"
-      distance={100}
-    >
+      distance={100}>
       <Image
         style={StyleSheet.absoluteFill}
-        source={{uri: "https://t3.ftcdn.net/jpg/01/68/33/76/240_F_168337653_BFaUjGRpNpO3rSB7lZSI2AGGhfLarwyt.jpg"}}
+        source={{
+          uri:
+            'https://t3.ftcdn.net/jpg/01/68/33/76/240_F_168337653_BFaUjGRpNpO3rSB7lZSI2AGGhfLarwyt.jpg',
+        }}
       />
       <Patch
         source={joi}
@@ -69,8 +62,7 @@ const Joi = () => {
         style={{
           flex: 1,
           padding: 15,
-        }}
-      >
+        }}>
         <LabelledSwitch
           label="On/Off"
           value={onOff}
@@ -78,9 +70,8 @@ const Joi = () => {
         />
         <View
           style={{
-            alignItems: "center",
-          }}
-        >
+            alignItems: 'center',
+          }}>
           <Slider
             style={styles.slider}
             value={snare}

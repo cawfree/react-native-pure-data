@@ -6,6 +6,8 @@
   />
 </p>
 
+<img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square"/>
+
 A native wrapper for [`libpd-ios`](https://github.com/libpd/pd-for-ios) and [`libpd-android`](https://github.com/libpd/pd-for-android), which enables you to rapidly prototype [**DSP**](https://en.wikipedia.org/wiki/Digital_signal_processing) algorithms described using [**Pure Data**](https://puredata.info/), an industry standard open source visual programming language capable of synthesising audiovisual effects.
 
 [`react-native-pure-data`](https://github.com/cawfree/react-native-pure-data) enables the synthesis of generative audio, which helps developers achieve dynamic sound at runtime. This is useful for games, music production and [communications](https://github.com/cawfree/OpenChirp).

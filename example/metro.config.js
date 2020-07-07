@@ -12,7 +12,7 @@ const metroDefault = require('metro-config/src/defaults/defaults.js');
 // see also this discussion:
 // https://github.com/brodybits/create-react-native-module/issues/232
 
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   // workaround for an issue with symlinks encountered starting with
@@ -21,11 +21,11 @@ module.exports = {
   resolver: {
     extraNodeModules: new Proxy(
       {},
-      { get: (_, name) => path.resolve('.', 'node_modules', name) }
+      {get: (_, name) => path.resolve('.', 'node_modules', name)},
     ),
     assetExts: metroDefault.assetExts.concat(['pd']),
   },
 
   // quick workaround for another issue with symlinks
-  watchFolders: ['.', '..']
-}
+  watchFolders: ['.', '..'],
+};

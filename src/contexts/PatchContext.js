@@ -1,8 +1,6 @@
 import React from "react";
 
-const defaultContext = Object.freeze({
-  
-});
+const defaultContext = Object.freeze({});
 
 const PatchContext = React.createContext(defaultContext);
 
