@@ -78,7 +78,7 @@ const Joi = () => {
             onValueChange={setSnare}
             step={1}
             minimumValue={0}
-            maximumValue={100}
+            maximumValue={1}
             minimumTrackTintColor="#FFFFFF"
             maximumTrackTintColor="#000000"
           />
@@ -88,7 +88,7 @@ const Joi = () => {
             onValueChange={setBass}
             step={1}
             minimumValue={0}
-            maximumValue={100}
+            maximumValue={1}
             minimumTrackTintColor="#FFFFFF"
             maximumTrackTintColor="#000000"
           />
@@ -98,7 +98,7 @@ const Joi = () => {
             onValueChange={setGamelan}
             step={1}
             minimumValue={0}
-            maximumValue={10}
+            maximumValue={1}
             minimumTrackTintColor="#FFFFFF"
             maximumTrackTintColor="#000000"
           />
@@ -118,7 +118,7 @@ const Joi = () => {
             onValueChange={setKick}
             step={1}
             minimumValue={0}
-            maximumValue={200}
+            maximumValue={1}
             minimumTrackTintColor="#FFFFFF"
             maximumTrackTintColor="#000000"
           />
