@@ -143,7 +143,14 @@ export default () => {
 };
 ```
 
-In the example above, a random frequency will be calculated and transmitted to the corresponding receiver on the diagram. In this case, the receiver would be called "nextFrequency", which would be declared using a Pure Data [**Object**](https://puredata.info/docs/ListOfPdExternals) with the definition `[r nextFrequency]`.
+In the example above, a random frequency will be calculated and transmitted to the corresponding receiver on the diagram. In this case, the receiver would be called "nextFrequency", which would be declared using a Pure Data [**Object**](https://puredata.info/docs/ListOfPdExternals) with the definition `[r nextFrequency]`:
+
+
+<p align="center">
+  <img
+    src="./public/example.png"
+  />
+</p>
 
 The convention used here is that for every numeric prop, the name of that prop corresponds to the message receiver within the patch.
 
@@ -158,4 +165,4 @@ Please check out the [**Example App**](https://github.com/cawfree/react-native-p
   - [**PdPatchRepo**](http://pdpatchrepo.info/patches/patch/14)
 
 ## ✌️ Licence
-[**MIT**](./LICENSE.md)
+[**MIT**](./LICENSE)
