@@ -73,6 +73,7 @@ repositories {
 dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'  // From node_modules
+    implementation 'org.puredata.android:pd-core:1.1.0'
 }
 
 def configureReactNativePom(def pom) {
