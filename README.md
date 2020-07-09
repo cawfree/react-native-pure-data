@@ -1,5 +1,7 @@
 # react-native-pure-data
 
+## TODO: Fix /src to /dist @ package.json
+
 <p align="center">
   <img
     src="./public/logo.png"
@@ -31,7 +33,6 @@ And remember,
 
 > With great power, comes great responsibility.
 > [- Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds)
-
 
 ## 🚀 Getting Started
 
@@ -145,7 +146,6 @@ export default () => {
 ```
 
 In the example above, a random frequency will be calculated and transmitted to the corresponding receiver on the diagram. In this case, the receiver would be called "nextFrequency", which would be declared using a Pure Data [**Object**](https://puredata.info/docs/ListOfPdExternals) with the definition `[r nextFrequency]`:
-
 
 <p align="center">
   <img

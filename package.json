@@ -3,7 +3,7 @@
   "title": "React Native Pure Data",
   "version": "0.0.1-alpha.1",
   "description": "🔈 ⚡ Synthesize algorithmic sound at runtime in React Native.",
-  "main": "dist",
+  "main": "src",
   "scripts": {
     "build": "babel src --out-dir dist",
     "prettify": "yarn prettier --write \"**/*.js\"",
