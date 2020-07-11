@@ -84,7 +84,17 @@ react-native run-ios
 
 #### 3.2 Android
 
-Android is not yet supported, but will be released **this weekend**.
+Please ensure that the `minSdkVersion` of your project is `17`:
+
+
+**android/app/build.gradle**
+
+```diff
+- minSdkVersion = 16
++ minSdkVersion = 17
+```
+
+Finally, reinstall your application using `react-native run-android`.
 
 ## ✍️ Example
 
