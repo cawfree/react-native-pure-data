@@ -84,8 +84,9 @@ react-native run-ios
 
 #### 3.2 Android
 
-Please ensure that the `minSdkVersion` of your project is `17`:
+[**Blocked.**](https://github.com/libpd/pd-for-android/issues/104)
 
+Please ensure that the `minSdkVersion` of your project is `17`:
 
 **android/app/build.gradle**
 
