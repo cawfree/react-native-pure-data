@@ -93,8 +93,7 @@ Please ensure that the `minSdkVersion` of your project is `17`:
 - minSdkVersion = 16
 + minSdkVersion = 17
 ```
-
-Finally, reinstall your application using `react-native run-android`.
+After this, make sure you've [**installed the `Android NDK (Side-by-side)`**](https://developer.android.com/studio/projects/install-ndk) to [**Android Studio**](https://developer.android.com/studio). Finally, reinstall your application using `react-native run-android`.
 
 ## ✍️ Example
 
