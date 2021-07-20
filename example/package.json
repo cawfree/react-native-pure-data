@@ -13,7 +13,7 @@
     "@react-native-community/slider": "^3.0.0",
     "add": "^2.0.6",
     "react": "16.9.0",
-    "react-native": "0.61.2",
+    "react-native": "0.62.3",
     "react-native-dial": "^1.0.12",
     "react-native-label": "^0.0.1-alpha.1",
     "react-native-pure-data": "../",
